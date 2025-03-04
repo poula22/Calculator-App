@@ -1,11 +1,7 @@
-package com.softspire.calculatorapp.domain
+package com.softspire.calculatorapp.domain.model.experssion
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import com.softspire.calculatorapp.domain.model.experssion.ExpressionParser
-import com.softspire.calculatorapp.domain.model.experssion.ExpressionPart
-import com.softspire.calculatorapp.domain.model.experssion.Operations
-import com.softspire.calculatorapp.domain.model.experssion.ParenthesesType
 import org.junit.Test
 
 class ExpressionParserTest {
