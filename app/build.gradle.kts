@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     // Unit Tests
+    testImplementation(libs.willowtreeapps.assertk)
     testImplementation(libs.androidx.core)
     testImplementation(libs.com.google.truth)
     testImplementation(libs.androidx.arch.core)

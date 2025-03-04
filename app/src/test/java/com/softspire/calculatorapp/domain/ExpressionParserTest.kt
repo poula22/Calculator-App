@@ -1,10 +1,11 @@
 package com.softspire.calculatorapp.domain
 
+import assertk.assertThat
+import assertk.assertions.isEqualTo
 import com.softspire.calculatorapp.domain.model.experssion.ExpressionParser
 import com.softspire.calculatorapp.domain.model.experssion.ExpressionPart
 import com.softspire.calculatorapp.domain.model.experssion.Operations
 import com.softspire.calculatorapp.domain.model.experssion.ParenthesesType
-import org.junit.Assert.*
 import org.junit.Test
 
 class ExpressionParserTest {
@@ -28,7 +29,7 @@ class ExpressionParserTest {
             ExpressionPart.Number(6.0)
         )
 
-        assertArrayEquals(expected.toTypedArray(), actual.toTypedArray())
+        assertThat(expected).isEqualTo(actual)
     }
 
     @Test
@@ -52,6 +53,6 @@ class ExpressionParserTest {
             ExpressionPart.Parentheses(ParenthesesType.Close)
         )
 
-        assertArrayEquals(expected.toTypedArray(), actual.toTypedArray())
+        assertThat(expected).isEqualTo(actual)
     }
 }
