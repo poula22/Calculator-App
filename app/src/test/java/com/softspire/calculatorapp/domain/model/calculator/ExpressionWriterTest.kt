@@ -19,15 +19,15 @@ class ExpressionWriterTest {
 
     @Test
     fun `Initial Parentheses parse is correct`() {
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Open))
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Open))
+        writer.processAction(CalculatorActions.Parentheses)
+        writer.processAction(CalculatorActions.Parentheses)
         writer.processAction(CalculatorActions.Number(5))
         writer.processAction(CalculatorActions.Operation(Operations.Add))
         writer.processAction(CalculatorActions.Number(5))
         writer.processAction(CalculatorActions.Decimal)
         writer.processAction(CalculatorActions.Number(5))
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Close))
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Close))
+        writer.processAction(CalculatorActions.Parentheses)
+        writer.processAction(CalculatorActions.Parentheses)
 
         val actual = writer.expression
         val expected = "((5+5.5))"
@@ -37,19 +37,19 @@ class ExpressionWriterTest {
     @Test
     fun `when calculate result, result is correct`() {
         //given
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Open))
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Open))
+        writer.processAction(CalculatorActions.Parentheses)
+        writer.processAction(CalculatorActions.Parentheses)
         writer.processAction(CalculatorActions.Number(5))
         writer.processAction(CalculatorActions.Operation(Operations.Add))
         writer.processAction(CalculatorActions.Number(5))
         writer.processAction(CalculatorActions.Decimal)
         writer.processAction(CalculatorActions.Number(5))
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Close))
+        writer.processAction(CalculatorActions.Parentheses)
         writer.processAction(CalculatorActions.Operation(Operations.Multiply))
         writer.processAction(CalculatorActions.Number(5))
         writer.processAction(CalculatorActions.Operation(Operations.Divide))
         writer.processAction(CalculatorActions.Number(5))
-        writer.processAction(CalculatorActions.Parentheses(ParenthesesType.Close))
+        writer.processAction(CalculatorActions.Parentheses)
 
         //When
         writer.processAction(CalculatorActions.Calculate)

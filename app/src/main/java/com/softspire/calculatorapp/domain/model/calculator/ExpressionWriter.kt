@@ -22,7 +22,7 @@ class ExpressionWriter {
                 }
             }
 
-            CalculatorActions.Delete -> expression.dropLast(1)
+            CalculatorActions.Delete -> expression = expression.dropLast(1)
             is CalculatorActions.Number -> expression += action.number
             is CalculatorActions.Operation -> {
                 if (!canEnterOperation()) return
@@ -30,14 +30,14 @@ class ExpressionWriter {
             }
 
             is CalculatorActions.Parentheses -> {
-                when (action.type) {
-                    ParenthesesType.Open -> if (canOpenParentheses()) {
-                        expression += action.type.symbol
+                when {
+                    canOpenParentheses() -> {
+                        expression += ParenthesesType.Open.symbol
                     }
-
-                    ParenthesesType.Close -> if (canCloseParentheses()) {
-                        expression += action.type.symbol
+                    canCloseParentheses() -> {
+                        expression += ParenthesesType.Close.symbol
                     }
+                    else -> Unit
                 }
             }
         }
