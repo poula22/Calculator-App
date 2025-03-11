@@ -6,7 +6,7 @@ sealed interface ExpressionPart {
     data class Parentheses(val type: ParenthesesType) : ExpressionPart
 }
 
-sealed interface ParenthesesType {
-    data object Open : ParenthesesType
-    data object Close : ParenthesesType
+sealed class ParenthesesType(val symbol: Char) {
+    data object Open : ParenthesesType('(')
+    data object Close : ParenthesesType(')')
 }
