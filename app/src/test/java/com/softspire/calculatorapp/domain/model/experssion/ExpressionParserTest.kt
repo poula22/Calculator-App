@@ -9,7 +9,7 @@ class ExpressionParserTest {
     @Test
     fun `simple expression is properly parsed`() {
         //Given
-        val expression = "1+2x2-4/6"
+        val expression = "1+2*2-4/6"
         //When
         val actual = ExpressionParser(expression).parse()
         //Then (Assertion)
@@ -31,7 +31,7 @@ class ExpressionParserTest {
     @Test
     fun `expression with parentheses is properly parsed`() {
         //Given
-        val expression = "1+(2x2-4/6)"
+        val expression = "1+(2*2-4/6)"
         //When
         val actual = ExpressionParser(expression).parse()
         //Then (Assertion))
