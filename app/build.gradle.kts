@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.firebase.appdistribution)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -19,8 +21,16 @@ android {
     }
 
     buildTypes {
+        create("staging") {
+//            applicationIdSuffix = ".staging"
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -51,6 +61,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     // Unit Tests
+    testImplementation(libs.willowtreeapps.assertk)
     testImplementation(libs.androidx.core)
     testImplementation(libs.com.google.truth)
     testImplementation(libs.androidx.arch.core)

@@ -1,10 +1,7 @@
-package com.softspire.calculatorapp.domain
+package com.softspire.calculatorapp.domain.model.experssion
 
-import com.softspire.calculatorapp.domain.model.experssion.ExpressionParser
-import com.softspire.calculatorapp.domain.model.experssion.ExpressionPart
-import com.softspire.calculatorapp.domain.model.experssion.Operations
-import com.softspire.calculatorapp.domain.model.experssion.ParenthesesType
-import org.junit.Assert.*
+import assertk.assertThat
+import assertk.assertions.isEqualTo
 import org.junit.Test
 
 class ExpressionParserTest {
@@ -12,7 +9,7 @@ class ExpressionParserTest {
     @Test
     fun `simple expression is properly parsed`() {
         //Given
-        val expression = "1+2*2-4/6"
+        val expression = "1+2x2-4/6"
         //When
         val actual = ExpressionParser(expression).parse()
         //Then (Assertion)
@@ -28,13 +25,13 @@ class ExpressionParserTest {
             ExpressionPart.Number(6.0)
         )
 
-        assertArrayEquals(expected.toTypedArray(), actual.toTypedArray())
+        assertThat(expected).isEqualTo(actual)
     }
 
     @Test
     fun `expression with parentheses is properly parsed`() {
         //Given
-        val expression = "1+(2*2-4/6)"
+        val expression = "1+(2x2-4/6)"
         //When
         val actual = ExpressionParser(expression).parse()
         //Then (Assertion))
@@ -52,6 +49,6 @@ class ExpressionParserTest {
             ExpressionPart.Parentheses(ParenthesesType.Close)
         )
 
-        assertArrayEquals(expected.toTypedArray(), actual.toTypedArray())
+        assertThat(expected).isEqualTo(actual)
     }
 }
